@@ -1,0 +1,44 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron .btn.lost { background-color: #C25C5C; border: 1px solid #963030; }
+.jumbotron .btn.found { background-color: #4F9760; border: 1px solid #2A5A24; }
+
+.cards {
+	&.lost {
+		> .title {
+			color: #C25C5C;
+		}
+	}
+
+	&.found {
+		> .title {
+			color: #4F9760;
+		}
+	}
+}
+
+.card {
+	border: 1px solid #B8B8B8;
+	padding: 1rem 1rem;
+	margin-bottom: 2rem;
+	
+	@include border-radius;
+	@include single-box-shadow;
+
+	.title {
+		color: #808080;
+		margin: 0 0 .4rem 0;
+	}
+
+	.description {
+		img {
+			margin: .3rem .6rem .3rem 0;
+			border: 1px solid #8F8C8C;
+		}
+	}
+}
