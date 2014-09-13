@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
+
+gem "mongoid"
 
 gem "font-awesome-rails"
 
@@ -38,7 +39,7 @@ gem 'spring',        group: :development
 gem 'haml'
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'unicorn-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
