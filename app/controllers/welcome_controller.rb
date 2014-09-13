@@ -1,14 +1,7 @@
 class WelcomeController < ApplicationController
 	def index
-		@lost_pets = [
-			Pet.new("Harlie", "Bacon ipsum dolor sit amet prosciutto turkey corned beef shoulder boudin pork belly drumstick spare ribs kevin pork loin t-bone venison. T-bone capicola jerky brisket bacon ground round pork. Tri-tip pork loin ball tip, tenderloin pastrami filet mignon meatloaf tongue tail beef ribs pig beef frankfurter. Pork chop brisket landjaeger kielbasa rump filet mignon. Beef boudin sirloin, tail kevin turducken landjaeger ball tip pastrami tongue capicola salami andouille. Pork loin ham hock ball tip chicken boudin ground round capicola tri-tip pork chop.", "http://placehold.it/200x250"),
-			Pet.new("Shiloh", "Bacon ipsum dolor sit amet prosciutto turkey corned beef shoulder boudin pork belly drumstick spare ribs kevin pork loin t-bone venison. T-bone capicola jerky brisket bacon ground round pork. Tri-tip pork loin ball tip, tenderloin pastrami filet mignon meatloaf tongue tail beef ribs pig beef frankfurter. Pork chop brisket landjaeger kielbasa rump filet mignon. Beef boudin sirloin, tail kevin turducken landjaeger ball tip pastrami tongue capicola salami andouille. Pork loin ham hock ball tip chicken boudin ground round capicola tri-tip pork chop.", "http://placehold.it/250x150"),
-			Pet.new("Garfield", "Bacon ipsum dolor sit amet prosciutto turkey corned beef shoulder boudin pork belly drumstick spare ribs kevin pork loin t-bone venison. T-bone capicola jerky brisket bacon ground round pork. Tri-tip pork loin ball tip, tenderloin pastrami filet mignon meatloaf tongue tail beef ribs pig beef frankfurter. Pork chop brisket landjaeger kielbasa rump filet mignon. Beef boudin sirloin, tail kevin turducken landjaeger ball tip pastrami tongue capicola salami andouille. Pork loin ham hock ball tip chicken boudin ground round capicola tri-tip pork chop.", "http://placehold.it/250x150")
-		]
-
-		@found_pets = [
-			Pet.new("Tonic", "Bacon ipsum dolor sit amet prosciutto turkey corned beef shoulder boudin pork belly drumstick spare ribs kevin pork loin t-bone venison. T-bone capicola jerky brisket bacon ground round pork. Tri-tip pork loin ball tip, tenderloin pastrami filet mignon meatloaf tongue tail beef ribs pig beef frankfurter. Pork chop brisket landjaeger kielbasa rump filet mignon. Beef boudin sirloin, tail kevin turducken landjaeger ball tip pastrami tongue capicola salami andouille. Pork loin ham hock ball tip chicken boudin ground round capicola tri-tip pork chop.", "http://placehold.it/200x250"),
-			Pet.new("Punkin", "Bacon ipsum dolor sit amet prosciutto turkey corned beef shoulder boudin pork belly drumstick spare ribs kevin pork loin t-bone venison. T-bone capicola jerky brisket bacon ground round pork. Tri-tip pork loin ball tip, tenderloin pastrami filet mignon meatloaf tongue tail beef ribs pig beef frankfurter. Pork chop brisket landjaeger kielbasa rump filet mignon. Beef boudin sirloin, tail kevin turducken landjaeger ball tip pastrami tongue capicola salami andouille. Pork loin ham hock ball tip chicken boudin ground round capicola tri-tip pork chop.", "http://placehold.it/250x150")
-		]
+		@lost_pets = Pet.where(active: true, status: :lost)
+		@found_pets = Pet.where(active: true, status: :found)
+		@pet = Pet.new
 	end
 end
