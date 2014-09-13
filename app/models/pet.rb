@@ -1,9 +1,20 @@
 class Pet
-	attr_accessor :name, :description, :image
+  include Mongoid::Document
 
-	def initialize(name, description, image)
-		@name = name
-		@description = description
-		@image = image
-	end
+  field :name, type: String
+  field :breed, type: String
+  field :description, type: String
+  field :images, type: Array
+
+  field :email, type: String
+  field :phone, type: String
+
+  field :area_code, type: String
+  field :city, type: String
+  field :state, type: String
+
+  field :active, type: Boolean, default: true
+  field :status, type: Symbol, default: :lost
+
+  validates_presence_of :name
 end

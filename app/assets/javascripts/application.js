@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require lodash
+//= require underscore
 //= require velocity
+//= require bootstrap
+//= require backbone
 //= require ractive
-//= require_tree .
+//= require ractive-adaptors-backbone
+//= require ractive-events-tap
+//= require ractive-transitions-slide

@@ -1,0 +1,123 @@
+<div id="container"></div>
+
+<script id="main-template" type="text/ractive">
+	<div class="jumbotron" style="margin-top: 3rem; border: 2px solid #cecece; padding: 3rem;">
+		<h1>Missing Pet Now</h1>
+		<p>Need help finding your pet? Youve come to the right place.</p>
+
+		<p id="new-actions-container" class="text-center">
+			<a href="#" on-tap="addNew: lost" class="lost"><%= image_tag("lost_button.png") %></a>
+			<a href="#" on-tap="addNew: found" class="found"><%= image_tag("found_button.png") %></a>
+		</p>
+	</div>
+
+	<div class="row">
+		<div class="cards col-md-5 col-md-offset-1 lost">
+			<h1 class="title">Lost Pets <i class="fa fa-bullhorn pull-right"></i></h1>
+			{{#each lostPets}}
+				{{>card}}
+			{{/each}}
+		</div>
+
+		<div class="cards col-md-5 found cards">
+			<h1 class="title">Found Pets <i class="fa fa-certificate pull-right"></i></h1>
+			{{#each foundPets}}
+				{{>card}}
+			{{/each}}
+		</div>
+	</div>
+
+	<div id="new-pet-container" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<fieldset>
+						<legend>General Information</legend>
+
+						<div class="form-group">
+							<label for="pet_name">Pet Name</label>
+							<input type="text" id="pet_name" name="pet[name]" class="form-control">
+						</div>
+
+						<div class="form-group">
+							<label for="pet_breed">Breed</label>
+							<select class="form-control" value="{{breed}}" id="pet_breed" name="pet[breed]" placeholder="Select a breed ...">
+								<option value="">Unknown</option>
+								{{#each breeds}}
+									<option value="{{id}}">{{name}}</option>
+								{{/each}}
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="pet_description">Description</label>
+							<textarea id="pet_description" name="pet[description]" class="form-control"></textarea>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Contact Information</legend>
+
+						<div class="form-group">
+							<label for="pet_email">Email</label>
+							<input type="text" id="pet_email" name="pet[email]" class="form-control" placeholder="you@gmail.com">
+						</div>
+
+						<div class="form-group">
+							<label for="pet_phone">Phone Number</label>
+							<input type="text" id="pet_phone" name="pet[phone]" class="form-control" placeholder="281) 555 - 1234">
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Location</legend>
+
+						<div class="form-group">
+							<label for="pet_area_code">Area Code</label>
+							<input type="text" id="pet_area_code" name="pet[area_code]" class="form-control">
+						</div>
+
+						<div class="form-group">
+							<label for="pet_city">City</label>
+							<input type="text" id="pet_city" name="pet[city]" class="form-control">
+						</div>
+
+						<div class="form-group">
+							<label for="pet_state">Email</label>
+							<input type="text" id="pet_state" name="pet[state]" class="form-control">
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Pictures</legend>
+
+
+					</fieldset>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Please, find my pet!</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script id="card" type="text/ractive">
+	<div class="card" intro="slide">
+		<h3 class="title">{{name}}</h3>
+		{{#if description}}
+			<p>{{description}}</p>
+		{{/if}}
+
+		<div class="actions text-right">
+			<a href="#"><i class="fa fa-question-circle fa-lg"></i></a>
+		</div>
+	</div>
+</script>
+
+<script>
+	var lostPets = <%= @lost_pets.to_json.html_safe %>;
+	var foundPets = <%= @found_pets.to_json.html_safe %>;
+</script>
