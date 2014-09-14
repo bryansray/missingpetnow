@@ -5,6 +5,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.jumbotron {
+	margin-top: 3rem;
+	border: 2px solid #A0A0A0;
+	padding: 2rem;
+	
+	h1 {
+		margin: 0;
+	}
+}
+
 .cards {
 	&.lost {
 		> .title {

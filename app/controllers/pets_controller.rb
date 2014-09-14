@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+	respond_to :html, :json
+
 	def new
 		@pet = Pet.new
 	end
@@ -10,7 +12,10 @@ class PetsController < ApplicationController
 		@pet = Pet.new(pet_params)
 
 		if @pet.valid? and @pet.save
-			redirect_to :root
+			respond_to do |format|
+				# format.html { redirect_to @pet }
+				format.json { render json: @pet }
+			end
 		else
 			render :new
 		end

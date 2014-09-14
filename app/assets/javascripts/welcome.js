@@ -1,41 +1,48 @@
 $(document).ready(function() {
+	var pets = new PetCollection(petsJson);
+
 	var ractive = new Ractive({
 		el: '#container',
 		template: '#main-template',
 
 		data: {
-			addNew: false,
+			pets: pets.models,
+			breeds: [{ id: 1, name: "Boxer" }, { id: 2, name: "Rottweiler"} ],
 
-			lostPets: lostPets,
-			foundPets: foundPets,
+			pet: {
+			},
 
-			breed: undefined,
-			breeds: [{ id: 1, name: "Boxer" }, { id: 2, name: "Rottweiler"} ]
-		}
+			exclude: function(list, status) {
+				return _.filter(list, function(item) { return item.get('status') !== status });
+			}
+		},
+
+		adapt: ['Backbone']
 	});
 
 	ractive.on({
 		addNew: function( event, status ) {
-			console.log(arguments);
 			$("#new-pet-container").modal();
-			$("#pet_name").focus();
-			this.set('addNew', true);
-			this.set('status', status);
+			this.set('pet.status', status);
 		},
 
-		submit: function( template ) {
-			console.log( arguments );
+		submit: function( event ) {
+			event.original.preventDefault();
 
-			return false;
+			var pet = new Pet(this.data.pet);
+			pet.save();
+			this.push('pets', pet);
+
+			$("#new-pet-container").modal('hide');
 		},
 
 		status: function( event, status ) {
-			this.set('status', status);
+			this.set('pet.status', status);
 		}
 	});
 
 	$("#new-pet-container").on("shown.bs.modal", function() {
-		console.log("modal shown: ", $("#pet_name").focus());
+		$("#pet_name").focus();
 	});
 
 

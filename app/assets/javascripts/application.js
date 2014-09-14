@@ -20,3 +20,4 @@
 //= require ractive-adaptors-backbone
 //= require ractive-events-tap
 //= require ractive-transitions-slide
+//= require_tree ./app
