@@ -15,11 +15,27 @@ $(document).ready(function() {
 	});
 
 	ractive.on({
-		addNew: function( event, template ) {
-			console.log(event, template, this);
+		addNew: function( event, status ) {
+			console.log(arguments);
 			$("#new-pet-container").modal();
+			$("#pet_name").focus();
 			this.set('addNew', true);
+			this.set('status', status);
+		},
+
+		submit: function( template ) {
+			console.log( arguments );
+
+			return false;
+		},
+
+		status: function( event, status ) {
+			this.set('status', status);
 		}
+	});
+
+	$("#new-pet-container").on("shown.bs.modal", function() {
+		console.log("modal shown: ", $("#pet_name").focus());
 	});
 
 

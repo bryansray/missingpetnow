@@ -2,6 +2,7 @@ class Pet
   include Mongoid::Document
 
   field :name, type: String
+  field :gender, type: Symbol, default: :male
   field :breed, type: String
   field :description, type: String
   field :images, type: Array
