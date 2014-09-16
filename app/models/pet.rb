@@ -17,5 +17,7 @@ class Pet
   field :active, type: Boolean, default: true
   field :status, type: Symbol, default: :lost
 
+  field :created_at, type: DateTime, default: Time.now
+
   validates_presence_of :name
 end
