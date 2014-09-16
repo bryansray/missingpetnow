@@ -6,5 +6,8 @@ var Pet = Backbone.Model.extend({
 });
 
 var PetCollection = Backbone.Collection.extend({
-	model: Pet
+	model: Pet,
+	comparator: function(pet) {
+		return -pet.get("created_at");
+	}
 });
