@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require moment
 //= require velocity
 //= require bootstrap
 //= require backbone
