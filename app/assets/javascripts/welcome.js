@@ -14,6 +14,10 @@ $(document).ready(function() {
 
 			exclude: function(list, status) {
 				return _.filter(list, function(item) { return item.get('status') !== status });
+			},
+
+			format: function(date) {
+				return moment(date).fromNow();
 			}
 		},
 
@@ -31,7 +35,8 @@ $(document).ready(function() {
 
 			var pet = new Pet(this.data.pet);
 			pet.save();
-			this.push('pets', pet);
+			// this.push('pets', pet);
+			pets.add(pet);
 
 			$("#new-pet-container").modal('hide');
 		},

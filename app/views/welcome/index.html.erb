@@ -135,13 +135,14 @@
 </script>
 
 <script id="card" type="text/ractive">
-	<div class="card" intro="slide">
+	<div class="card clearfix" intro="slide">
 		<h3 class="title">{{name}}</h3>
 		{{#if description}}
 			<p>{{description}}</p>
 		{{/if}}
+		<div class="pull-left"><span class="timestamp">{{format(created_at)}}</span></div>
 
-		<div class="actions text-right">
+		<div class="actions pull-right text-right">
 			<a href="#"><i class="fa fa-question-circle fa-lg"></i></a>
 		</div>
 	</div>
@@ -149,6 +150,4 @@
 
 <script>
 	var petsJson = <%= @pets.to_json.html_safe %>;
-	var lostPets = <%= @lost_pets.to_json.html_safe %>;
-	var foundPets = <%= @found_pets.to_json.html_safe %>;
 </script>
